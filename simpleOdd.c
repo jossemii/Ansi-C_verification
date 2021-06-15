@@ -32,4 +32,5 @@ int checkOdd( ) {
   // Write here assertions to check if checkOddArray1
   // and checkOddArray2 return the same result for the
   // same input
+  __CPROVER_assert( checkOddArray1(a) == checkOddArray2(a), "check if return the same value.");
 }
