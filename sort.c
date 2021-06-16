@@ -2,9 +2,9 @@
 
 #define N 8
 
-void swap(int *xp, int *yp)
+void swap(int8_t *xp, int8_t *yp)
 {
-    int temp = *xp;
+    int8_t temp = *xp;
     *xp = *yp;
     *yp = temp;
 }
@@ -25,7 +25,7 @@ void checkSort() {
  	int8_t	array[N];
 	for (int i = 0; i < N; ++i){
         // Assume numbers in array are integers in range [0,16]
-		//__CPROVER_assume(array[i] >= 0 && array[i] <= 16);
+		__CPROVER_assume(array[i] >= 0 && array[i] <= 16);
 	}
 
 	sort (array, N);
@@ -34,7 +34,7 @@ void checkSort() {
 	unsigned is_sorted = 1;
 	for (int i=1; i <  N; ++i){
 		// write the assertions to check that the array is sorted
-		//__CPROVER_assert( array[i-1] <= array[i] ,"check that the previous is upper or equal.");
+		__CPROVER_assert( array[i-1] <= array[i] ,"check that the previous is upper or equal.");
 		if (array[i-1] > array[i]){
 			is_sorted = 0;
 			break;
@@ -42,11 +42,6 @@ void checkSort() {
 	}
 
 	// write the assertions to check that the array is sorted
-	//__CPROVER_assert( is_sorted==1 ,"check that the array is sorted.");
+	__CPROVER_assert( is_sorted==1 ,"check that the array is sorted.");
 
-}
-
-
-void main() {
-	checkSort();
 }
