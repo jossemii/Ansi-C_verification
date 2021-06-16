@@ -16,10 +16,16 @@ int checkOddArray1(int8_t a[]) {
 }
 
 int checkOddArray2(int8_t a[])  {
-    int i, odd;
+    int i, odd, tmp;
  
     odd = 0;
-    for (i = 0; i < N ; i++) { odd = (odd + a[i])  %  2; }
+    for (i = 0; i < N ; i++) { 
+        tmp = (odd + a[i])  %  2;
+        if(tmp<0){
+            tmp = tmp * -1;
+        }
+        odd = tmp;
+    }
     return odd;
 }
 
