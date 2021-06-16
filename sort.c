@@ -14,7 +14,18 @@ void sort (int8_t a[], int size) {
    int i, j;
    for (i = 0; i < size-1; i++)      
   
-       // Last i elements are already in place   
+       // Last i elements are already in place
+       for (j = 0; j < size-i-1; j++) 
+           if (a[j] > a[j+1])
+              swap(&a[j], &a[j+1]);
+}
+
+void sortError (int8_t a[], int size) {
+	// write your favorite sorting algorithm
+   int i, j;
+   for (i = 0; i < size-1; i++)      
+  
+       // First i elements are already in place? 
        for (j = 1; j < size-i; j++) 
            if (a[j] > a[j+1])
               swap(&a[j], &a[j+1]);
@@ -29,6 +40,7 @@ void checkSort() {
 	}
 
 	sort(array, N);
+	//sortError(array, N);
 
 	// check if the array is sorted.
 	unsigned is_sorted = 1;
